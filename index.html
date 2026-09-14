@@ -5,194 +5,757 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>我的个人主页</title>
+    <title>Ethan | 个人主页</title>
 
     <style>
+
+        /* =========================
+           基础设置
+        ========================= */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                "Microsoft YaHei", sans-serif;
+        html {
+            scroll-behavior: smooth;
+        }
 
-            background: #f5f7fa;
-            color: #1f2937;
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                "Microsoft YaHei",
+                sans-serif;
+
+            background: #f5f7fb;
+            color: #1e293b;
+
             line-height: 1.7;
         }
 
-        /* 顶部区域 */
-        .hero {
-            min-height: 420px;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           导航栏
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 1000;
+
+            background: rgba(15, 23, 42, 0.88);
+
+            backdrop-filter: blur(12px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-container {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 16px 24px;
 
             display: flex;
+
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+        }
 
-            text-align: center;
-            padding: 60px 20px;
+        .logo {
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #0f172a,
-                    #1e3a8a,
-                    #2563eb
-                );
+            font-weight: 700;
+
+            color: white;
+
+            font-size: 20px;
+
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 28px;
+        }
+
+        .nav-links a {
+
+            color: #cbd5e1;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
 
             color: white;
         }
 
-        .hero-content {
-            max-width: 800px;
+
+        /* =========================
+           Hero 首屏
+        ========================= */
+
+        .hero {
+
+            min-height: 620px;
+
+            display: flex;
+
+            align-items: center;
+
+            background:
+
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(96,165,250,0.35),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #172554,
+                    #1d4ed8
+                );
+
+            color: white;
+
+            padding:
+                120px 24px 100px;
         }
 
-        .tag {
+        .hero-container {
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1.4fr 0.6fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+
+        .small-title {
+
             display: inline-block;
 
-            padding: 8px 18px;
+            padding: 7px 16px;
+
+            border-radius: 50px;
+
+            border:
+                1px solid rgba(255,255,255,0.25);
+
+            background:
+                rgba(255,255,255,0.08);
+
+            font-size: 13px;
+
             margin-bottom: 24px;
 
-            border: 1px solid rgba(255,255,255,0.35);
-            border-radius: 999px;
-
-            background: rgba(255,255,255,0.1);
-
-            font-size: 14px;
-        }
-
-        h1 {
-            font-size: 52px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 20px;
             color: #dbeafe;
         }
 
-        /* 主体 */
-        .container {
-            max-width: 1050px;
-            margin: -60px auto 60px;
-            padding: 0 24px;
+
+        .hero h1 {
+
+            font-size: 56px;
+
+            line-height: 1.2;
+
+            margin-bottom: 20px;
         }
 
-        .card {
+
+        .hero-subtitle {
+
+            font-size: 23px;
+
+            color: #bfdbfe;
+
+            margin-bottom: 18px;
+        }
+
+
+        .hero-description {
+
+            max-width: 650px;
+
+            color: #cbd5e1;
+
+            font-size: 16px;
+
+            margin-bottom: 32px;
+        }
+
+
+        /* 按钮 */
+
+        .buttons {
+
+            display: flex;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+
+            display: inline-block;
+
+            padding: 11px 22px;
+
+            border-radius: 9px;
+
+            font-size: 14px;
+
+            transition: 0.25s;
+        }
+
+        .btn-primary {
+
             background: white;
 
-            border-radius: 18px;
-            padding: 34px;
+            color: #1d4ed8;
 
-            margin-bottom: 24px;
-
-            box-shadow:
-                0 10px 35px rgba(0, 0, 0, 0.08);
+            font-weight: 600;
         }
 
-        h2 {
-            font-size: 26px;
-            margin-bottom: 18px;
+        .btn-primary:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.2);
+        }
+
+
+        .btn-secondary {
+
+            border:
+                1px solid rgba(255,255,255,0.35);
+
+            color: white;
+        }
+
+        .btn-secondary:hover {
+
+            background:
+                rgba(255,255,255,0.1);
+        }
+
+
+        /* 头像 */
+
+        .avatar-wrapper {
+
+            display: flex;
+
+            justify-content: center;
+        }
+
+        .avatar {
+
+            width: 230px;
+            height: 230px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 90px;
+
+            font-weight: 700;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.25),
+                    rgba(255,255,255,0.06)
+                );
+
+            border:
+                1px solid rgba(255,255,255,0.25);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.3);
+        }
+
+
+        /* =========================
+           通用主体
+        ========================= */
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 90px 24px;
+        }
+
+        .section-title {
+
+            margin-bottom: 38px;
+        }
+
+        .section-title span {
+
+            color: #2563eb;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        .section-title h2 {
+
+            font-size: 34px;
+
+            margin-top: 5px;
 
             color: #0f172a;
         }
 
-        .intro {
-            font-size: 17px;
-            color: #475569;
+        .section-title p {
+
+            margin-top: 8px;
+
+            color: #64748b;
         }
 
-        /* 三个学习方向 */
-        .grid {
+
+        /* =========================
+           关于我
+        ========================= */
+
+        .about-card {
+
+            background: white;
+
+            padding: 38px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 12px 35px rgba(15,23,42,0.07);
+        }
+
+        .about-card p {
+
+            color: #475569;
+
+            font-size: 16px;
+
+            max-width: 900px;
+        }
+
+
+        /* 标签 */
+
+        .tags {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-top: 24px;
+        }
+
+        .tag {
+
+            padding: 7px 14px;
+
+            border-radius: 50px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 13px;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================
+           学习方向
+        ========================= */
+
+        .gray-section {
+
+            background: #eef2f7;
+        }
+
+        .grid-3 {
+
             display: grid;
 
             grid-template-columns:
                 repeat(3, 1fr);
 
-            gap: 20px;
+            gap: 22px;
         }
 
-        .skill-card {
-            padding: 25px;
+        .info-card {
 
-            border-radius: 14px;
+            background: white;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #f8fafc,
-                    #eef2ff
-                );
+            border-radius: 16px;
 
-            border: 1px solid #e2e8f0;
+            padding: 30px;
+
+            border:
+                1px solid #e2e8f0;
 
             transition: 0.25s;
         }
 
-        .skill-card:hover {
-            transform: translateY(-5px);
+        .info-card:hover {
+
+            transform: translateY(-6px);
 
             box-shadow:
-                0 12px 25px rgba(0,0,0,0.08);
+                0 15px 35px rgba(15,23,42,0.1);
         }
+
 
         .icon {
-            font-size: 32px;
-            margin-bottom: 10px;
+
+            font-size: 35px;
+
+            margin-bottom: 14px;
         }
 
-        .skill-card h3 {
+        .info-card h3 {
+
             margin-bottom: 8px;
+
+            color: #0f172a;
         }
 
-        .skill-card p {
-            font-size: 14px;
+        .info-card p {
+
             color: #64748b;
+
+            font-size: 14px;
         }
 
-        /* 目标区域 */
-        .goal {
+
+        /* =========================
+           项目
+        ========================= */
+
+        .project-card {
+
+            background: white;
+
+            border-radius: 17px;
+
+            overflow: hidden;
+
+            border:
+                1px solid #e2e8f0;
+
+            transition: 0.25s;
+        }
+
+        .project-card:hover {
+
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 16px 40px rgba(15,23,42,0.12);
+        }
+
+
+        .project-top {
+
+            height: 120px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 44px;
+
             background:
+
                 linear-gradient(
                     135deg,
                     #eff6ff,
-                    #eef2ff
+                    #e0e7ff
                 );
-
-            border-left: 5px solid #2563eb;
         }
 
-        footer {
-            text-align: center;
 
-            padding: 35px;
+        .project-content {
+
+            padding: 25px;
+        }
+
+
+        .project-content h3 {
+
+            font-size: 19px;
+
+            margin-bottom: 9px;
+
+            color: #0f172a;
+        }
+
+
+        .project-content p {
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            min-height: 94px;
+        }
+
+
+        .project-tags {
+
+            margin-top: 18px;
+
+            display: flex;
+
+            gap: 7px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .mini-tag {
+
+            padding: 4px 9px;
+
+            border-radius: 6px;
+
+            background: #f1f5f9;
+
+            color: #475569;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           学习路线
+        ========================= */
+
+        .roadmap {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+        }
+
+        .roadmap-item {
+
+            position: relative;
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 14px;
+
+            border:
+                1px solid #e2e8f0;
+        }
+
+        .roadmap-number {
+
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-weight: bold;
+
+            margin-bottom: 13px;
+        }
+
+        .roadmap-item h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 6px;
+        }
+
+        .roadmap-item p {
+
+            font-size: 13px;
+
+            color: #64748b;
+        }
+
+
+        /* =========================
+           联系区域
+        ========================= */
+
+        .contact {
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #172554,
+                    #1e40af
+                );
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .contact .container {
+
+            padding-top: 75px;
+            padding-bottom: 75px;
+        }
+
+        .contact h2 {
+
+            font-size: 34px;
+
+            margin-bottom: 12px;
+        }
+
+        .contact p {
+
+            color: #bfdbfe;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           页脚
+        ========================= */
+
+        footer {
+
+            background: #0f172a;
 
             color: #94a3b8;
 
-            font-size: 14px;
+            text-align: center;
+
+            padding: 26px;
+
+            font-size: 13px;
         }
 
-        /* 手机适配 */
-        @media (max-width: 768px) {
 
-            h1 {
-                font-size: 36px;
+        /* =========================
+           手机适配
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
             }
 
-            .hero {
-                min-height: 360px;
+            .hero-container {
+
+                grid-template-columns: 1fr;
+
+                text-align: center;
             }
 
-            .grid {
+            .hero-description {
+
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+
+                justify-content: center;
+            }
+
+            .avatar-wrapper {
+
+                order: -1;
+            }
+
+            .avatar {
+
+                width: 160px;
+                height: 160px;
+
+                font-size: 60px;
+            }
+
+            .hero h1 {
+
+                font-size: 38px;
+            }
+
+            .grid-3 {
+
                 grid-template-columns: 1fr;
             }
 
-            .container {
-                margin-top: -40px;
+            .roadmap {
+
+                grid-template-columns: 1fr;
             }
+
         }
+
     </style>
 </head>
 
@@ -200,158 +763,651 @@
 <body>
 
 
-    <section class="hero">
+<!-- =========================
+     导航栏
+========================= -->
 
-        <div class="hero-content">
+<nav>
 
-            <div class="tag">
+    <div class="nav-container">
+
+        <div class="logo">
+            Ethan.
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#about">
+                关于我
+            </a>
+
+            <a href="#skills">
+                学习方向
+            </a>
+
+            <a href="#projects">
+                项目
+            </a>
+
+            <a href="#roadmap">
+                学习路线
+            </a>
+
+            <a href="#contact">
+                联系我
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-container">
+
+
+        <div>
+
+            <div class="small-title">
+
                 Fudan University · AI & Data Analysis
+
             </div>
 
+
             <h1>
-                你好，我是复旦大学的学生
+
+                你好，我是 Ethan
+
             </h1>
 
-            <p>
+
+            <div class="hero-subtitle">
+
                 金融 × 数据分析 × 人工智能
+
+            </div>
+
+
+            <p class="hero-description">
+
+                我关注金融、数据分析与人工智能的交叉应用，
+                希望通过数据工具与 AI 技术，
+                提升分析和解决真实业务问题的能力。
+
+            </p>
+
+
+            <div class="buttons">
+
+                <a
+                    class="btn btn-primary"
+                    href="#projects"
+                >
+                    查看我的项目
+                </a>
+
+
+                <a
+                    class="btn btn-secondary"
+                    href="https://github.com/zhoujunyi"
+                    target="_blank"
+                >
+                    GitHub →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="avatar-wrapper">
+
+            <div class="avatar">
+
+                E
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     关于我
+========================= -->
+
+<section
+    class="container"
+    id="about"
+>
+
+    <div class="section-title">
+
+        <span>
+            ABOUT ME
+        </span>
+
+        <h2>
+            关于我
+        </h2>
+
+    </div>
+
+
+    <div class="about-card">
+
+        <p>
+
+            我目前正在学习人工智能、数据分析以及金融相关知识。
+
+            在数据分析方面，我正在学习 Excel、
+            FineBI 等工具，并尝试通过真实业务数据完成
+            数据清洗、指标分析和可视化。
+
+            同时，我也在学习大语言模型、API 与 Agent
+            的基础原理，并探索人工智能技术在金融、
+            数据分析以及风险管理等场景中的实际应用。
+
+        </p>
+
+
+        <div class="tags">
+
+            <div class="tag">
+                Finance
+            </div>
+
+            <div class="tag">
+                Data Analysis
+            </div>
+
+            <div class="tag">
+                Artificial Intelligence
+            </div>
+
+            <div class="tag">
+                Risk Management
+            </div>
+
+            <div class="tag">
+                Excel
+            </div>
+
+            <div class="tag">
+                FineBI
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     学习方向
+========================= -->
+
+<section
+    class="gray-section"
+    id="skills"
+>
+
+    <div class="container">
+
+
+        <div class="section-title">
+
+            <span>
+                LEARNING
+            </span>
+
+            <h2>
+                当前学习方向
+            </h2>
+
+            <p>
+                将金融知识、数据能力与人工智能工具逐步结合。
             </p>
 
         </div>
 
-    </section>
+
+        <div class="grid-3">
 
 
+            <div class="info-card">
 
-    <main class="container">
-
-
-        <section class="card">
-
-            <h2>
-                👋 关于我
-            </h2>
-
-            <p class="intro">
-
-                我目前正在学习人工智能与数据分析，
-                希望了解大语言模型、数据分析以及
-                人工智能 Agent 的实际应用。
-
-                同时，我也关注金融与数据分析领域，
-                希望利用数据和人工智能工具解决实际问题。
-
-            </p>
-
-        </section>
-
-
-
-        <section class="card">
-
-            <h2>
-                📚 学习方向
-            </h2>
-
-
-            <div class="grid">
-
-
-                <div class="skill-card">
-
-                    <div class="icon">
-                        🤖
-                    </div>
-
-                    <h3>
-                        人工智能
-                    </h3>
-
-                    <p>
-                        学习大语言模型、Prompt、
-                        Agent 与人工智能应用。
-                    </p>
-
+                <div class="icon">
+                    🤖
                 </div>
 
+                <h3>
+                    人工智能
+                </h3>
 
+                <p>
 
-                <div class="skill-card">
+                    学习 LLM、Embedding、
+                    Attention、API 与 Agent，
+                    理解大语言模型的基本原理和使用方式。
 
-                    <div class="icon">
-                        📊
-                    </div>
-
-                    <h3>
-                        数据分析
-                    </h3>
-
-                    <p>
-                        学习 Excel、BI 工具、
-                        数据可视化与数据分析方法。
-                    </p>
-
-                </div>
-
-
-
-                <div class="skill-card">
-
-                    <div class="icon">
-                        💰
-                    </div>
-
-                    <h3>
-                        金融分析
-                    </h3>
-
-                    <p>
-                        探索金融数据分析、
-                        风险管理与金融科技应用。
-                    </p>
-
-                </div>
-
+                </p>
 
             </div>
 
-        </section>
+
+
+            <div class="info-card">
+
+                <div class="icon">
+                    📊
+                </div>
+
+                <h3>
+                    数据分析
+                </h3>
+
+                <p>
+
+                    学习 Excel、FineBI、
+                    数据清洗、数据可视化以及
+                    业务数据分析方法。
+
+                </p>
+
+            </div>
 
 
 
-        <section class="card goal">
+            <div class="info-card">
+
+                <div class="icon">
+                    💰
+                </div>
+
+                <h3>
+                    金融与风险
+                </h3>
+
+                <p>
+
+                    关注金融数据分析、风险管理与
+                    金融科技，希望将数据方法用于
+                    真实金融业务问题。
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     项目
+========================= -->
+
+<section
+    class="container"
+    id="projects"
+>
+
+    <div class="section-title">
+
+        <span>
+            PROJECTS
+        </span>
+
+        <h2>
+            项目与实践
+        </h2>
+
+        <p>
+            记录学习过程中完成的数据与 AI 实践。
+        </p>
+
+    </div>
+
+
+
+    <div class="grid-3">
+
+
+        <!-- 项目 1 -->
+
+        <div class="project-card">
+
+            <div class="project-top">
+
+                📊
+
+            </div>
+
+
+            <div class="project-content">
+
+                <h3>
+                    FineBI 经营分析
+                </h3>
+
+                <p>
+
+                    基于业务数据完成销售表现、
+                    客户结构与经营指标分析，
+                    并通过 FineBI 搭建多页
+                    数据可视化仪表板。
+
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span class="mini-tag">
+                        FineBI
+                    </span>
+
+                    <span class="mini-tag">
+                        Dashboard
+                    </span>
+
+                    <span class="mini-tag">
+                        数据分析
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 项目 2 -->
+
+        <div class="project-card">
+
+            <div class="project-top">
+
+                📈
+
+            </div>
+
+
+            <div class="project-content">
+
+                <h3>
+                    Excel 数据分析实践
+                </h3>
+
+                <p>
+
+                    使用 Excel 完成数据清洗、
+                    条件判断、查找匹配、
+                    数据汇总与分析，
+                    建立基础的数据处理流程。
+
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span class="mini-tag">
+                        Excel
+                    </span>
+
+                    <span class="mini-tag">
+                        数据清洗
+                    </span>
+
+                    <span class="mini-tag">
+                        数据处理
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 项目 3 -->
+
+        <div class="project-card">
+
+            <div class="project-top">
+
+                🤖
+
+            </div>
+
+
+            <div class="project-content">
+
+                <h3>
+                    AI & Agent 学习
+                </h3>
+
+                <p>
+
+                    学习大语言模型、
+                    API 与 Agent 的基本原理，
+                    并通过 GitHub 与 Vercel
+                    完成个人网页发布与部署。
+
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span class="mini-tag">
+                        LLM
+                    </span>
+
+                    <span class="mini-tag">
+                        Agent
+                    </span>
+
+                    <span class="mini-tag">
+                        GitHub
+                    </span>
+
+                    <span class="mini-tag">
+                        Vercel
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     学习路线
+========================= -->
+
+<section
+    class="gray-section"
+    id="roadmap"
+>
+
+    <div class="container">
+
+
+        <div class="section-title">
+
+            <span>
+                ROADMAP
+            </span>
 
             <h2>
-                🎯 我的目标
+                我的学习路线
             </h2>
 
-            <p class="intro">
-
-                学习如何将人工智能、数据分析与金融知识结合，
-                提升解决真实业务问题的能力。
-
-            </p>
-
-        </section>
-
-
-    </main>
+        </div>
 
 
 
-    <footer>
-
-        © 2026 · My Personal Homepage
-
-    </footer>
+        <div class="roadmap">
 
 
-</body>
+            <div class="roadmap-item">
 
-</html>
+                <div class="roadmap-number">
+                    1
+                </div>
 
-    <p>
-        学习如何利用人工智能和数据分析工具解决实际问题。
-    </p>
+                <h3>
+                    数据基础
+                </h3>
+
+                <p>
+                    Excel、数据清洗、
+                    函数与数据处理。
+                </p>
+
+            </div>
+
+
+
+            <div class="roadmap-item">
+
+                <div class="roadmap-number">
+                    2
+                </div>
+
+                <h3>
+                    数据分析
+                </h3>
+
+                <p>
+                    BI、指标体系、
+                    数据可视化和业务分析。
+                </p>
+
+            </div>
+
+
+
+            <div class="roadmap-item">
+
+                <div class="roadmap-number">
+                    3
+                </div>
+
+                <h3>
+                    金融与风控
+                </h3>
+
+                <p>
+                    金融业务分析、
+                    风险管理和风控策略。
+                </p>
+
+            </div>
+
+
+
+            <div class="roadmap-item">
+
+                <div class="roadmap-number">
+                    4
+                </div>
+
+                <h3>
+                    AI 应用
+                </h3>
+
+                <p>
+                    LLM、Agent 与
+                    AI 辅助数据分析。
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     联系我
+========================= -->
+
+<section
+    class="contact"
+    id="contact"
+>
+
+    <div class="container">
+
+        <h2>
+            Keep Learning.
+        </h2>
+
+        <p>
+
+            持续学习金融、数据分析与人工智能，
+            并尝试把知识真正应用到实践中。
+
+        </p>
+
+
+        <a
+            class="btn btn-primary"
+            href="https://github.com/zhoujunyi"
+            target="_blank"
+        >
+
+            Visit My GitHub
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<footer>
+
+    © 2026 Ethan · Built with HTML & CSS · Deployed on Vercel
+
+</footer>
+
 
 </body>
 
